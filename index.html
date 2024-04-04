@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Multiplication table</title>
+    <title>Multiplication Table</title>
+	<style>
+		table {
+			background-color: lavender;
+			border-collapse: collapse;
+		}
+		body {
+				text-align: center;
+			}
+	</style>
 </head>
 <body>
-    <label for="rows">Number of Rows (2-10):</label>
-    <input type="number" id="rows" min="2" max="10"><br><br>
-    <label for="cols">Number of Columns (2-10):</label>
-    <input type="number" id="cols" min="2" max="10"><br><br>
-    <button onclick="generateTable()">Generate Table</button><br><br>
-    <div id="tableContainer"></div>
+    <div id="multiTable"></div>
 
     <script>
-        function multiTable() {
-            var rows = parseFloat(prompt("Enter how many rows needed: "));
-            var cols = parseFloat(prompt("Enter how many column needed: "));
+        function generateMultiplicationTable() {
+    let n = parseInt(prompt("Enter the number of rows (between 2 and 10)(❁´◡`❁):"));
+    let m = parseInt(prompt("Enter the number of columns (between 2 and 10)ヾ(≧▽≦*)o:"));
 
-            if (rows < 2 || rows > 10 || cols < 2 || cols > 10) {
-                alert("Please enter values within the range of 2-10 for both rows and columns.");
-                return;
-            }
+    if (isNaN(n) || isNaN(m) || n < 2 || n > 10 || m < 2 || m > 10) {
+        alert("Make sure to enter valid numbers that are between 2 and 10. `(*>﹏<*)′");
+        return;
+    }
 
-            var table = "<table border='1'>";
-            for (var i = 1; i <= rows; i++) {
-                table += "<tr>";
-                for (var j = 1; j <= cols; j++) {
-                    table += "<td>" + (i * j) + "</td>";
-                }
-                table += "</tr>";
-            }
-            table += "</table>";
-
-            document.getElementById("tableContainer").innerHTML = table;
+    let table = "<table border='1'>";
+    for (let i = 1; i <= n; i++) {
+        table += "<tr>";
+        for (let j = 1; j <= m; j++) {
+            table += "<td>" + (i * j) + "</td>";
         }
+        table += "</tr>";
+    }
+    table += "</table>";
+
+    document.getElementById("multiTable").innerHTML = table;
+}
+
+generateMultiplicationTable();
+
     </script>
 </body>
 </html>
